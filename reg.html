@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Form Validation</title>
+        <script>
+            function validate()
+            {
+                var username=document.demo.uname.value;
+                var email=document.demo.email.value;
+                var regx=/[a-z A-Z _]+[@][a-z]+[\.][a-z]{2,3}/;
+                var password=document.demo.password.value;
+                var cpassword=document.demo.cpassword.value;
+                var phoneno=document.demo.phoneno.value;
+                
+                if(username==" "||username=="")
+                {
+                    window.alert("no blank values allowed");
+                    return false;
+                }
+                else if(regx.test(email)==false)
+                {
+                    window.alert("invali email id");
+                    return false;
+                }
+                else if(password==" "||password==null)
+                {
+                    window.alert("blank Password");
+                    return false;
+                }
+                else if(password.length<8)
+                {
+                    window.alert("password too short");
+                     return false;
+                }
+                else if(password!=cpassword)
+                {
+                   window.alert("incorrect password");
+                   return false;
+                }
+                else if(phoneno==" "||phoneno==null)
+                { 
+                   window.alert("blank pnone number");
+                   return false;
+               }
+               
+               else if(phoneno.length<10||phoneno.length>10)
+               {
+                   window.alert("phone number should be 10 digits");
+                   return false;
+               }
+                else
+                {
+                    return true;
+                }
+            }
+            </script>
+    </head>
+    <body>
+        <h3>Registration Form</h3>
+        <form name="demo" onsubmit="return validate()" action="message.html">
+            <input name="uname" placeholder="Username" type="text" onblur="validate()"/><br><br>
+            <input name="email" placeholder="enter email" type="text" onblur="validate()"/><br><br> 
+           <input name="password" placeholder="Password" type="password" onblur="validate()"/><br><br>
+           <input name="cpassword" placeholder="conformPassword" type="password" onblur="validate()"/><br><br>
+           <input name="phoneno" placeholder="phoneno" type="number" onblur="validate()"/><br><br>
+           <button type="submit">Submit</button>
+        </form>
+        
+    </body>
+</html>
